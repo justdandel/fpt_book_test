@@ -16,13 +16,8 @@
         <div class="productbox; text-center" style="margin: 0 50px 0 50px;">
             <a asp-controller="Book" asp-action="Detail" asp-route-id="@b.Id" ><img src="@b.Img" width="150" height="200" /></a>
             <p style="padding: 0px; margin: 0px">@b.Name</p>
-            <p>@b.Price $</p>
-            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
-            { 
-                <a class="btn btn-primary">Buy</a>
-            }
-
-            
+            <p>@b.Price $</p> 
         </div>
     }
 </div> 
+

@@ -18,6 +18,7 @@ namespace Assignment.Data
         public DbSet<Book> books { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Author> authors { get; set; }
+        public DbSet<Order> orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -146,6 +147,7 @@ namespace Assignment.Data
                     CategoryID = 1,
                     Price = 30.4,
                     Edition = 2,
+                    Quantity = 10,
                     AuthorID = 1, 
                     Description = "ahsufhadhsafasdhaa",
                     Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU"
@@ -157,6 +159,7 @@ namespace Assignment.Data
                     CategoryID = 1,
                     Price = 99,
                     Edition = 3,
+                    Quantity = 15,
                     AuthorID = 1,
                     Description = "kjhadbfhlgsdafb saldlasdasd",
                     Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU"
@@ -168,6 +171,7 @@ namespace Assignment.Data
                     CategoryID = 3,
                     Price = 38,
                     Edition = 2,
+                    Quantity = 5,
                     AuthorID = 4,
                     Description = "kalhdfladhlahldf fadhfahdfaf",
                     Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU"

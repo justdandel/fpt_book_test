@@ -1,8 +1,11 @@
 ﻿@model Assignment.Models.Book
+@{
+    Layout = "Layout";
+}
 
 <div class="row text-center">
     <div class="col">
-        <img src="@Model.Img" height="230" width="230" />
+        <img src="@Model.Img" height="auto" width="250" />
     </div>
     <div class="col">
         <table class=" table table-bordered">
@@ -18,6 +21,10 @@
                 <td>@Model.Edition</td>
             </tr>
             <tr>
+                <th>Author</th>
+                <td>@Model.Author.Name</td>
+            </tr>
+            <tr>
                 <th>Category</th>
                 <td>
                     <a asp-controller="Category" asp-action="Info"
@@ -26,6 +33,24 @@
                     </a>
                 </td>
             </tr>
+            <tr>
+                <th>Desciption</th>
+                <td>@Model.Description</td>
+            </tr>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+            { 
+                <tr>
+                    <th colspan="2" >Add to Cart</th>
+                </tr>
+                <tr> 
+                    <form method="post" asp-controller="Order" asp-action="MakeOrder">
+                        <input type="hidden" name="book" value="@Model.Id">
+                        <td style="padding-top: 16px;"><input type="number" name="quantity" min="1" max="@Model.Quantity" /></td>
+                        <td><input type="submit" class="btn btn-danger" value="Make Order" /></td>
+                    </form>
+                </tr>
+            }
         </table>
+        
     </div>
 </div>

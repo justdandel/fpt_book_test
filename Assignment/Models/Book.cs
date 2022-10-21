@@ -22,6 +22,8 @@ namespace Assignment.Models
 
         [Required] 
         public int Edition { get; set; }
+        [Required]
+        public int Quantity { get; set; }
 
         [Required]
         [Range(1,int.MaxValue,ErrorMessage ="This filed must be chose")]
@@ -32,6 +34,6 @@ namespace Assignment.Models
         public int AuthorID { get; set; }
 
         public Author Author { get; set; }
-        public ICollection<Cart> carts { get; set; }
+        public ICollection<Order> orders { get; set; }
     }
 }

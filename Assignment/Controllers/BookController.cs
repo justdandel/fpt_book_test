@@ -57,6 +57,10 @@ namespace Assignment.Controllers
         
         public IActionResult Detail(int id)
         {
+            var authors = context.authors.ToList();
+            ViewBag.Author = authors;
+            var categories = context.categories.ToList();
+            ViewBag.Categories = categories;
             var book = context.books.Include(s => s.Category).FirstOrDefault(s => s.Id == id);
             return View(book);
         }

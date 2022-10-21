@@ -1,0 +1,56 @@
+﻿@model List<Order>
+@{
+    Layout = "Layout";
+}
+
+
+    <table class="table table-bordered text-center ">
+
+        <th class="h3 text-primary" colspan="6">Order List</th>
+        <tr>
+            <th>ID</th>
+            <th>UserName</th>
+            <th>BookName</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>OrderDate</th>
+        </tr>
+        @foreach (var b in Model)
+        {
+            @if(User.IsInRole("Customer")){
+                    @if (b.UserEmail == User.Identity.Name)
+                    {
+                        <tr>
+                            <td>@b.Id</td>
+                            <td>@b.UserEmail</td>
+                            @for (int i = 0; i < ViewBag.Book.Count; i++)
+                            {
+                                if (b.BookID == ViewBag.Book[i].Id)
+                                {
+                                    <td>@ViewBag.Book[i].Name</td>
+                                }
+                            }
+                            <td>@b.OrderQuantity</td>
+                            <td>@b.OrderPrice</td>
+                            <td>@b.OrderDate</td>
+                        </tr>
+                    }
+            }
+            else {
+                <tr>
+                    <td>@b.Id</td>
+                    <td>@b.UserEmail</td>
+                    @for (int i = 0; i < ViewBag.Book.Count; i++)
+                    {
+                        if (b.BookID == ViewBag.Book[i].Id)
+                        {
+                            <td>@ViewBag.Book[i].Name</td>
+                        }
+                    }
+                    <td>@b.OrderQuantity</td>
+                    <td>@b.OrderPrice</td>
+                    <td>@b.OrderDate</td>
+                </tr>
+            }
+        }   
+    </table>

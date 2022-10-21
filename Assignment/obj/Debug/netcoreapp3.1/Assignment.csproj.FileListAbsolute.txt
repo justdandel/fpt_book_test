@@ -960,3 +960,5 @@ C:\Users\Khait\source\repos\ASM_1970-main\Assignment\obj\Debug\netcoreapp3.1\Ass
 C:\Users\Khait\source\repos\ASM_1970-main\Assignment\obj\Debug\netcoreapp3.1\Assignment.pdb
 C:\Users\Khait\source\repos\ASM_1970-main\Assignment\obj\Debug\netcoreapp3.1\Assignment.genruntimeconfig.cache
 C:\Users\Khait\source\repos\ASM_1970-main\Assignment\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Layout.cshtml.g.cs
+C:\Users\Khait\source\repos\ASM_1970-main\Assignment\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs
+C:\Users\Khait\source\repos\ASM_1970-main\Assignment\obj\Debug\netcoreapp3.1\Razor\Views\Shared\StoreOwnerLayout.cshtml.g.cs

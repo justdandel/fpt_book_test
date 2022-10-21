@@ -1,0 +1,9 @@
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.csproj.AssemblyReference.cache
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.AssemblyInfoInputs.cache
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.AssemblyInfo.cs
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.csproj.CoreCompileInputs.cache
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.RazorAssemblyInfo.cache
+C:\Users\Khait\source\repos\ASM_1970-main\demo_order\obj\Debug\netcoreapp3.1\demo_order.RazorAssemblyInfo.cs

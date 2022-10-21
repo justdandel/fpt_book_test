@@ -192,6 +192,7 @@ namespace Assignment.Migrations
                     Description = table.Column<string>(nullable: false),
                     Img = table.Column<string>(nullable: false),
                     Edition = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
                     CategoryID = table.Column<int>(nullable: false),
                     AuthorID = table.Column<int>(nullable: false)
                 },
@@ -213,21 +214,22 @@ namespace Assignment.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cart",
+                name: "orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserEmail = table.Column<string>(nullable: true),
-                    OrderPrice = table.Column<int>(nullable: false),
+                    OrderPrice = table.Column<double>(nullable: false),
+                    OrderQuantity = table.Column<int>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     BookID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cart", x => x.Id);
+                    table.PrimaryKey("PK_orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cart_books_BookID",
+                        name: "FK_orders_books_BookID",
                         column: x => x.BookID,
                         principalTable: "books",
                         principalColumn: "Id",
@@ -239,9 +241,9 @@ namespace Assignment.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "A", "b185b0be-3c58-4aa3-b5cb-bca8fff89d6a", "Admin", "Admin" },
-                    { "B", "26ce844c-0f76-40a2-bbe0-4feda1245730", "Customer", "Customer" },
-                    { "C", "6983303f-62c0-4b2d-bd07-94e719564c9d", "StoreOwner", "StoreOwner" }
+                    { "A", "93a11a36-772a-47cc-80a9-09aab332fe2d", "Admin", "Admin" },
+                    { "B", "0005550d-c68a-4f4b-a3bd-d5c3cbb91283", "Customer", "Customer" },
+                    { "C", "03a02c6e-920b-473d-8321-d6e70a12eb05", "StoreOwner", "StoreOwner" }
                 });
 
             migrationBuilder.InsertData(
@@ -249,9 +251,9 @@ namespace Assignment.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "4f1da370-0d46-4dba-8c34-741923efc31d", "admin@fpt.com", true, false, null, null, "admin@fpt.com", "AQAAAAEAACcQAAAAEPQcrEF8XOw589lS04RyNP0cK5y6sl53jNm9jM/XoAZC/jZlQZmr5E2PwoV25q9yXw==", null, false, "946a2535-4d28-45a6-b465-4f9e76e525a3", false, "admin@fpt.com" },
-                    { "2", 0, "f441e5b8-97b2-4286-a59e-39cbd4e9a4ae", "customer@fpt.com", true, false, null, null, "customer@fpt.com", "AQAAAAEAACcQAAAAEM0DmuXB4SrGJhiSuNF5Ef6cVKMYWgk/Sxl9ErdxsTkLshvXrSttmyPNYatC7WGuvw==", null, false, "6ba91243-f89b-4cd5-b25f-c008c0939cfc", false, "customer@fpt.com" },
-                    { "3", 0, "4a4ff37b-c12a-4370-b9fa-7d763e105e28", "storeowner@fpt.com", true, false, null, null, "storeowner@fpt.com", "AQAAAAEAACcQAAAAEBAoRUl9aMacXsfDQLapdvPGYy24DZq6g0Nw0jp9pFAj8VVrISoRayw7GZbwCwiugw==", null, false, "b5040cf1-7a4d-4a04-b708-4304d08b0cf6", false, "storeowner@fpt.com" }
+                    { "1", 0, "f72741ca-1e0c-4c37-98c8-5b66ecb64018", "admin@fpt.com", true, false, null, null, "admin@fpt.com", "AQAAAAEAACcQAAAAEMNBbg9zmOwiWqMu2rNqRy5yscK0BQiWj5TF24szoxqkVobVXuP5ILOC7zmc0zP5xA==", null, false, "b7bac224-7047-4a3d-864b-18e310d41db6", false, "admin@fpt.com" },
+                    { "2", 0, "01f5ffa0-9840-42cb-9619-714e68c9ab3f", "customer@fpt.com", true, false, null, null, "customer@fpt.com", "AQAAAAEAACcQAAAAEHlrw3H6PugaIz16zOoVvp/TdgLxS+Nt2NCvrI/V9MdU/5j1/8WWYmKYr3/NtoycKg==", null, false, "ff428681-05f9-4b69-8b14-cecc6602205b", false, "customer@fpt.com" },
+                    { "3", 0, "4a914b3d-dc20-4078-bed3-9b6905efd174", "storeowner@fpt.com", true, false, null, null, "storeowner@fpt.com", "AQAAAAEAACcQAAAAEGzhkbEBHXGD5oKeMPZl6e9mMtoWY58XChI+jvNB5oh4zk9ZWcKg8rKNL3w1wOJ8JQ==", null, false, "de397a2d-3639-4e61-9530-63cb457a9aa8", false, "storeowner@fpt.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -284,12 +286,12 @@ namespace Assignment.Migrations
 
             migrationBuilder.InsertData(
                 table: "books",
-                columns: new[] { "Id", "AuthorID", "CategoryID", "Description", "Edition", "Img", "Name", "Price" },
+                columns: new[] { "Id", "AuthorID", "CategoryID", "Description", "Edition", "Img", "Name", "Price", "Quantity" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "ahsufhadhsafasdhaa", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "asdj", 30.399999999999999 },
-                    { 2, 1, 1, "kjhadbfhlgsdafb saldlasdasd", 3, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "oiwouas", 99.0 },
-                    { 3, 4, 3, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "uhsdbhasad", 38.0 }
+                    { 1, 1, 1, "ahsufhadhsafasdhaa", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "asdj", 30.399999999999999, 10 },
+                    { 2, 1, 1, "kjhadbfhlgsdafb saldlasdasd", 3, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "oiwouas", 99.0, 15 },
+                    { 3, 4, 3, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "uhsdbhasad", 38.0, 5 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -342,8 +344,8 @@ namespace Assignment.Migrations
                 column: "CategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_BookID",
-                table: "Cart",
+                name: "IX_orders_BookID",
+                table: "orders",
                 column: "BookID");
         }
 
@@ -365,7 +367,7 @@ namespace Assignment.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Cart");
+                name: "orders");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
