@@ -1,0 +1,57 @@
+﻿@model Assignment.Models.Book
+
+<form asp-controller="Book" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input class="form-control" asp-for="Price" />
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Edition"></label>
+        <input class="form-control" asp-for="Edition" />
+        <span class="text-danger" asp-validation-for="Edition"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Img"></label>
+
+        <input class="form-control mt-3" asp-for="Img" />
+        <span class="text-danger" asp-validation-for="Img"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <select asp-for="AuthorID" class="list-group-item">
+            <option value="0">Select a university hihi </option>
+            @foreach (var item in ViewBag.Author)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <span class=" text-danger" asp-validation-for="AuthorID"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <select asp-for="CategoryID" class="list-group-item">
+            <option value="0">Select a university hihi </option>
+            @foreach (var item in ViewBag.Category)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <span class=" text-danger" asp-validation-for="CategoryID"></span>
+    </div>
+    <div class=" form-group">
+        <input type="submit" class="btn btn-primary" value="Add" />
+    </div>
+</form>

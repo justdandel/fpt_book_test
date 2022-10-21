@@ -1,0 +1,14 @@
+﻿@model Assignment.Models.Category
+@{
+    Layout = "Layout";
+}
+<div class="main-product" style="display: flex; flex-wrap: wrap; justify-content: center;">
+    @foreach (var b in Model.BookList)
+    {
+        <div class="productbox; text-center" style="margin: 0 50px 0 50px;">
+            <a asp-controller="Book" asp-action="Detail" asp-route-id="@b.Id"><img src="@b.Img" width="150" height="200" /></a>
+            <p>@b.Name</p>
+            <p>@b.Price $</p>
+        </div>
+    }
+</div> 

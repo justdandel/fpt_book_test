@@ -1,0 +1,28 @@
+﻿@model List<Book>
+@{
+    Layout = "Layout";
+}
+<form method="get" asp-controller="Book" asp-action="Search">
+    <div class="mt-3 inputs">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Search" name="name">
+
+    </div>
+</form>
+<div class="main-product" style="display: flex; flex-wrap: wrap; justify-content: center;">
+    
+    @foreach (var b in Model)
+    {
+        <div class="productbox; text-center" style="margin: 0 50px 0 50px;">
+            <a asp-controller="Book" asp-action="Detail" asp-route-id="@b.Id" ><img src="@b.Img" width="150" height="200" /></a>
+            <p style="padding: 0px; margin: 0px">@b.Name</p>
+            <p>@b.Price $</p>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
+            { 
+                <a class="btn btn-primary">Buy</a>
+            }
+
+            
+        </div>
+    }
+</div> 

@@ -1,0 +1,17 @@
+﻿@model List<Laptopcs>
+
+<div class="card-group">
+    <div class="row">
+        @foreach (var l in Model){
+            <div class="col-md-3" >
+                <img src="@l.Img" width="150" height="200" />
+                Name: @l.Name </br>
+                <form method="post" asp-controller="Order" asp-action="MakeOrder">
+                    <input type"hidden" name="laptopcs" value="@l.Id">
+                    <input type="Number" min="1" max="@l.Quantity" />
+                    <input type = "submit" value="Order" />
+                </form>
+            </div>
+        }
+    </div>
+</div>
