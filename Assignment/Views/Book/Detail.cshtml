@@ -1,7 +1,13 @@
 ﻿@model Assignment.Models.Book
-@{
+@if(User.IsInRole("StoreOwner")){
+    {
+        Layout = "StoreOwnerLayout";
+    }
+}
+else {
     Layout = "Layout";
 }
+
 
 <div class="row text-center">
     <div class="col">

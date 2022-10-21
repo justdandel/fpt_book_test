@@ -1,5 +1,12 @@
 ﻿@model Assignment.Models.Category
-@{
+@if (User.IsInRole("StoreOwner"))
+{
+    {
+        Layout = "StoreOwnerLayout";
+    }
+}
+else
+{
     Layout = "Layout";
 }
 <div class="main-product" style="display: flex; flex-wrap: wrap; justify-content: center;">

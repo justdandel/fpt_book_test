@@ -17,7 +17,7 @@ namespace Assignment.Controllers
             this.context = context;
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles ="StoreOwner")]
         public IActionResult Index()
         {
             var categories = context.categories.ToList();

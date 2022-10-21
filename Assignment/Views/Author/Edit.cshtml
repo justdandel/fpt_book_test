@@ -1,5 +1,7 @@
 ﻿@model Assignment.Models.Author
-
+@{
+    Layout = "StoreOwnerLayout";
+}
 <form method="post" asp-controller="Author" asp-action="Add">
     <div class="form-group">
         <label asp-for="@Model.Name"></label>

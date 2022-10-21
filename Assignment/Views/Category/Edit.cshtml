@@ -1,5 +1,7 @@
 ﻿@model Assignment.Models.Category
-
+@{
+    Layout = "StoreOwnerLayout";
+}
 <form method="post" asp-controller="Category" asp-action="Edit">
     <div class="form-group">
         <label asp-for="@Model.Name"></label>
