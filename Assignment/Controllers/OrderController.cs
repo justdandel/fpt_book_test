@@ -38,6 +38,7 @@ namespace Assignment.Controllers
             order.OrderDate = System.DateTime.Now;
             order.OrderPrice = books.Price * quantity;
             order.UserEmail = User.Identity.Name;
+            books.Quantity -= quantity;
             context.orders.Add(order);
             context.SaveChanges();
             return RedirectToAction("Index");

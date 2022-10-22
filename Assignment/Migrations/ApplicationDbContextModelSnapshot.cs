@@ -61,6 +61,22 @@ namespace Assignment.Migrations
                             DoB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU",
                             Name = "Gabriel Garcia Marquez"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.",
+                            DoB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU",
+                            Name = "Victor Hugo"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.",
+                            DoB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU",
+                            Name = "Emest Hemingway"
                         });
                 });
 
@@ -117,7 +133,7 @@ namespace Assignment.Migrations
                             Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU",
                             Name = "asdj",
                             Price = 30.399999999999999,
-                            Quantity = 10
+                            Quantity = 20
                         },
                         new
                         {
@@ -129,7 +145,7 @@ namespace Assignment.Migrations
                             Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU",
                             Name = "oiwouas",
                             Price = 99.0,
-                            Quantity = 15
+                            Quantity = 25
                         },
                         new
                         {
@@ -142,6 +158,42 @@ namespace Assignment.Migrations
                             Name = "uhsdbhasad",
                             Price = 38.0,
                             Quantity = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AuthorID = 4,
+                            CategoryID = 4,
+                            Description = "kalhdfladhlahldf fadhfahdfaf",
+                            Edition = 2,
+                            Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU",
+                            Name = "Cuốn theo chiều gió",
+                            Price = 38.0,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AuthorID = 4,
+                            CategoryID = 2,
+                            Description = "kalhdfladhlahldf fadhfahdfaf",
+                            Edition = 2,
+                            Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU",
+                            Name = "Chiến tranh và hòa bình",
+                            Price = 38.0,
+                            Quantity = 4
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AuthorID = 4,
+                            CategoryID = 2,
+                            Description = "kalhdfladhlahldf fadhfahdfaf",
+                            Edition = 2,
+                            Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU",
+                            Name = "Trăm năm cô đơn",
+                            Price = 38.0,
+                            Quantity = 7
                         });
                 });
 
@@ -156,6 +208,9 @@ namespace Assignment.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("categories");
@@ -164,12 +219,26 @@ namespace Assignment.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Science"
+                            Name = "Science",
+                            Status = 1
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Mystery"
+                            Name = "Mystery",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Comedy",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Horror",
+                            Status = 1
                         });
                 });
 
@@ -232,21 +301,21 @@ namespace Assignment.Migrations
                         new
                         {
                             Id = "A",
-                            ConcurrencyStamp = "93a11a36-772a-47cc-80a9-09aab332fe2d",
+                            ConcurrencyStamp = "f073be6d-1ed2-448b-87f7-251be4900e75",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
                             Id = "B",
-                            ConcurrencyStamp = "0005550d-c68a-4f4b-a3bd-d5c3cbb91283",
+                            ConcurrencyStamp = "d871d9e9-4ea8-4d81-8ffe-ec8aff8d1636",
                             Name = "Customer",
                             NormalizedName = "Customer"
                         },
                         new
                         {
                             Id = "C",
-                            ConcurrencyStamp = "03a02c6e-920b-473d-8321-d6e70a12eb05",
+                            ConcurrencyStamp = "e1e944a9-2ab3-46d6-b618-cde52d647a10",
                             Name = "StoreOwner",
                             NormalizedName = "StoreOwner"
                         });
@@ -345,46 +414,61 @@ namespace Assignment.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f72741ca-1e0c-4c37-98c8-5b66ecb64018",
-                            Email = "admin@fpt.com",
+                            ConcurrencyStamp = "ca05d072-d20b-4ed8-85e2-cea6f3950a32",
+                            Email = "admin@fpt.edu.vn",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedUserName = "admin@fpt.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMNBbg9zmOwiWqMu2rNqRy5yscK0BQiWj5TF24szoxqkVobVXuP5ILOC7zmc0zP5xA==",
+                            NormalizedUserName = "admin@fpt.edu.vn",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM3ukB646TUuodpkEXY+/tD8RPrXIrAov5sv6EBzSOjK/lwvhWZMJdLqE7tIqCDeEQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b7bac224-7047-4a3d-864b-18e310d41db6",
+                            SecurityStamp = "25bbdb04-8301-4221-97aa-25d95cfcc130",
                             TwoFactorEnabled = false,
-                            UserName = "admin@fpt.com"
+                            UserName = "admin@fpt.edu.vn"
                         },
                         new
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "01f5ffa0-9840-42cb-9619-714e68c9ab3f",
-                            Email = "customer@fpt.com",
+                            ConcurrencyStamp = "69e89678-f7d6-44e2-b1a6-97dde27bad32",
+                            Email = "customer@fpt.edu.vn",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedUserName = "customer@fpt.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHlrw3H6PugaIz16zOoVvp/TdgLxS+Nt2NCvrI/V9MdU/5j1/8WWYmKYr3/NtoycKg==",
+                            NormalizedUserName = "customer@fpt.edu.vn",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP9edc/mrlBZRJcY14MYE6V6Vs5ZCk2x9E9EtJngmFazTSgQR3+yBj4/DzzRA+emrQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ff428681-05f9-4b69-8b14-cecc6602205b",
+                            SecurityStamp = "5acc7f9f-7d60-469a-8ab7-545333cbb7ee",
                             TwoFactorEnabled = false,
-                            UserName = "customer@fpt.com"
+                            UserName = "customer@fpt.edu.vn"
                         },
                         new
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4a914b3d-dc20-4078-bed3-9b6905efd174",
-                            Email = "storeowner@fpt.com",
+                            ConcurrencyStamp = "b2065641-2660-4196-aab0-36a2ae404365",
+                            Email = "storeowner@fpt.edu.vn",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedUserName = "storeowner@fpt.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGzhkbEBHXGD5oKeMPZl6e9mMtoWY58XChI+jvNB5oh4zk9ZWcKg8rKNL3w1wOJ8JQ==",
+                            NormalizedUserName = "storeowner@fpt.edu.vn",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDIOMLDIZZqvEqWJ51lv0f2poS0wmX5VeEsg7WBBObz4MPPuHsyceul5zCDwUDDU4Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "de397a2d-3639-4e61-9530-63cb457a9aa8",
+                            SecurityStamp = "ca52060a-3d6d-4225-9c64-6415e1853f07",
                             TwoFactorEnabled = false,
-                            UserName = "storeowner@fpt.com"
+                            UserName = "storeowner@fpt.edu.vn"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a05c5bb4-8a7f-4ccc-a5a0-631585db026f",
+                            Email = "customer1@fpt.edu.vn",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "customer1@fpt.edu.vn",
+                            PasswordHash = "AQAAAAEAACcQAAAAEI6kP+JWgBERYYf/KanZRvTkybQO83jaxfuM4X55f7EiBU1RcjcQqZoMnx4touzsrg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f4ad115a-d6f1-4fb7-89d2-ed553b1737fb",
+                            TwoFactorEnabled = false,
+                            UserName = "customer1@fpt.edu.vn"
                         });
                 });
 
@@ -465,6 +549,11 @@ namespace Assignment.Migrations
                         {
                             UserId = "3",
                             RoleId = "C"
+                        },
+                        new
+                        {
+                            UserId = "4",
+                            RoleId = "B"
                         });
                 });
 

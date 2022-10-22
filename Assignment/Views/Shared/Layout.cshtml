@@ -37,7 +37,10 @@
                                     @{
                                         for (int i = 0; i < ViewBag.Categories.Count; i++)
                                         {
+                                            if(ViewBag.Categories[i].Status == 1){
                                                 <a class="dropdown-item" asp-controller="Category" asp-action="Info" asp-route-id="@ViewBag.Categories[i].Id">@ViewBag.Categories[i].Name</a>
+                                            }
+                                                
                                         }
                                     }
 

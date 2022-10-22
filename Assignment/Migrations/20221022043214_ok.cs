@@ -68,7 +68,8 @@ namespace Assignment.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -241,9 +242,9 @@ namespace Assignment.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "A", "93a11a36-772a-47cc-80a9-09aab332fe2d", "Admin", "Admin" },
-                    { "B", "0005550d-c68a-4f4b-a3bd-d5c3cbb91283", "Customer", "Customer" },
-                    { "C", "03a02c6e-920b-473d-8321-d6e70a12eb05", "StoreOwner", "StoreOwner" }
+                    { "A", "f073be6d-1ed2-448b-87f7-251be4900e75", "Admin", "Admin" },
+                    { "B", "d871d9e9-4ea8-4d81-8ffe-ec8aff8d1636", "Customer", "Customer" },
+                    { "C", "e1e944a9-2ab3-46d6-b618-cde52d647a10", "StoreOwner", "StoreOwner" }
                 });
 
             migrationBuilder.InsertData(
@@ -251,9 +252,10 @@ namespace Assignment.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "f72741ca-1e0c-4c37-98c8-5b66ecb64018", "admin@fpt.com", true, false, null, null, "admin@fpt.com", "AQAAAAEAACcQAAAAEMNBbg9zmOwiWqMu2rNqRy5yscK0BQiWj5TF24szoxqkVobVXuP5ILOC7zmc0zP5xA==", null, false, "b7bac224-7047-4a3d-864b-18e310d41db6", false, "admin@fpt.com" },
-                    { "2", 0, "01f5ffa0-9840-42cb-9619-714e68c9ab3f", "customer@fpt.com", true, false, null, null, "customer@fpt.com", "AQAAAAEAACcQAAAAEHlrw3H6PugaIz16zOoVvp/TdgLxS+Nt2NCvrI/V9MdU/5j1/8WWYmKYr3/NtoycKg==", null, false, "ff428681-05f9-4b69-8b14-cecc6602205b", false, "customer@fpt.com" },
-                    { "3", 0, "4a914b3d-dc20-4078-bed3-9b6905efd174", "storeowner@fpt.com", true, false, null, null, "storeowner@fpt.com", "AQAAAAEAACcQAAAAEGzhkbEBHXGD5oKeMPZl6e9mMtoWY58XChI+jvNB5oh4zk9ZWcKg8rKNL3w1wOJ8JQ==", null, false, "de397a2d-3639-4e61-9530-63cb457a9aa8", false, "storeowner@fpt.com" }
+                    { "1", 0, "ca05d072-d20b-4ed8-85e2-cea6f3950a32", "admin@fpt.edu.vn", true, false, null, null, "admin@fpt.edu.vn", "AQAAAAEAACcQAAAAEM3ukB646TUuodpkEXY+/tD8RPrXIrAov5sv6EBzSOjK/lwvhWZMJdLqE7tIqCDeEQ==", null, false, "25bbdb04-8301-4221-97aa-25d95cfcc130", false, "admin@fpt.edu.vn" },
+                    { "2", 0, "69e89678-f7d6-44e2-b1a6-97dde27bad32", "customer@fpt.edu.vn", true, false, null, null, "customer@fpt.edu.vn", "AQAAAAEAACcQAAAAEP9edc/mrlBZRJcY14MYE6V6Vs5ZCk2x9E9EtJngmFazTSgQR3+yBj4/DzzRA+emrQ==", null, false, "5acc7f9f-7d60-469a-8ab7-545333cbb7ee", false, "customer@fpt.edu.vn" },
+                    { "3", 0, "b2065641-2660-4196-aab0-36a2ae404365", "storeowner@fpt.edu.vn", true, false, null, null, "storeowner@fpt.edu.vn", "AQAAAAEAACcQAAAAEDIOMLDIZZqvEqWJ51lv0f2poS0wmX5VeEsg7WBBObz4MPPuHsyceul5zCDwUDDU4Q==", null, false, "ca52060a-3d6d-4225-9c64-6415e1853f07", false, "storeowner@fpt.edu.vn" },
+                    { "4", 0, "a05c5bb4-8a7f-4ccc-a5a0-631585db026f", "customer1@fpt.edu.vn", true, false, null, null, "customer1@fpt.edu.vn", "AQAAAAEAACcQAAAAEI6kP+JWgBERYYf/KanZRvTkybQO83jaxfuM4X55f7EiBU1RcjcQqZoMnx4touzsrg==", null, false, "f4ad115a-d6f1-4fb7-89d2-ed553b1737fb", false, "customer1@fpt.edu.vn" }
                 });
 
             migrationBuilder.InsertData(
@@ -262,16 +264,20 @@ namespace Assignment.Migrations
                 values: new object[,]
                 {
                     { 1, "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU", "Franz Kafka" },
-                    { 4, "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU", "Gabriel Garcia Marquez" }
+                    { 4, "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU", "Gabriel Garcia Marquez" },
+                    { 3, "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU", "Victor Hugo" },
+                    { 5, "ác phẩm của Kafka đều mang một đặc trưng: nói về một phần u tối trong dãy “cảm xúc” của con người. Chúng đều được bao trùm trong bầu không khí, ấn tượng, cảm giác rất riêng biệt, xuất hiện với tần suất lớn như một nỗi ám ảnh khôn nguôi.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_RyhnMq01yw12TECaSLPWq83HKvFvakE6A&usqp=CAU", "Emest Hemingway" }
                 });
 
             migrationBuilder.InsertData(
                 table: "categories",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "Name", "Status" },
                 values: new object[,]
                 {
-                    { 1, "Science" },
-                    { 3, "Mystery" }
+                    { 1, "Science", 1 },
+                    { 3, "Mystery", 1 },
+                    { 2, "Comedy", 1 },
+                    { 4, "Horror", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -281,7 +287,8 @@ namespace Assignment.Migrations
                 {
                     { "1", "A" },
                     { "2", "B" },
-                    { "3", "C" }
+                    { "3", "C" },
+                    { "4", "B" }
                 });
 
             migrationBuilder.InsertData(
@@ -289,9 +296,12 @@ namespace Assignment.Migrations
                 columns: new[] { "Id", "AuthorID", "CategoryID", "Description", "Edition", "Img", "Name", "Price", "Quantity" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "ahsufhadhsafasdhaa", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "asdj", 30.399999999999999, 10 },
-                    { 2, 1, 1, "kjhadbfhlgsdafb saldlasdasd", 3, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "oiwouas", 99.0, 15 },
-                    { 3, 4, 3, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "uhsdbhasad", 38.0, 5 }
+                    { 1, 1, 1, "ahsufhadhsafasdhaa", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "asdj", 30.399999999999999, 20 },
+                    { 2, 1, 1, "kjhadbfhlgsdafb saldlasdasd", 3, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "oiwouas", 99.0, 25 },
+                    { 3, 4, 3, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "uhsdbhasad", 38.0, 5 },
+                    { 6, 4, 2, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "Chiến tranh và hòa bình", 38.0, 4 },
+                    { 9, 4, 2, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "Trăm năm cô đơn", 38.0, 7 },
+                    { 4, 4, 4, "kalhdfladhlahldf fadhfahdfaf", 2, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUAaDFqobRwQ7KdQLQF3qkBYmb7rETd2TlA&usqp=CAU", "Cuốn theo chiều gió", 38.0, 10 }
                 });
 
             migrationBuilder.CreateIndex(

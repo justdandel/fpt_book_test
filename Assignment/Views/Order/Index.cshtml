@@ -1,5 +1,12 @@
 ﻿@model List<Order>
-@{
+@if (User.IsInRole("StoreOwner"))
+{
+    {
+        Layout = "StoreOwnerLayout";
+    }
+}
+else
+{
     Layout = "Layout";
 }
 

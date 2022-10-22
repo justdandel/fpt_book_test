@@ -71,10 +71,9 @@ namespace Assignment.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null, string CusUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
-
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout

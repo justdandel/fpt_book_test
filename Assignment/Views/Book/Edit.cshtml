@@ -2,7 +2,7 @@
 @{
     Layout = "StoreOwnerLayout";
 }
-<form method="post" asp-controller="Book" asp-action="Edit">
+<form asp-controller="Book" asp-action="Edit" method="post">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" />
@@ -24,15 +24,21 @@
         <span class="text-danger" asp-validation-for="Edition"></span>
     </div>
     <div class="form-group">
+        <label asp-for="Quantity"></label>
+        <input class="form-control" asp-for="Quantity" />
+        <span class="text-danger" asp-validation-for="Quantity"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="Img"></label>
-        <img src="Img" width="100" height="100" />
+
         <input class="form-control mt-3" asp-for="Img" />
         <span class="text-danger" asp-validation-for="Img"></span>
     </div>
+
     <div class="form-group">
-        <label asp-for="Name"></label>
+        <label>Author</label>
         <select asp-for="AuthorID" class="list-group-item">
-            <option value="0">Select a university hihi </option>
+            <option value="0">Select author </option>
             @foreach (var item in ViewBag.Author)
             {
                 <option value="@item.Id">@item.Name</option>
@@ -42,17 +48,17 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Name"></label>  
-        <select class="list-group-item" asp-for="CategoryID">
-            <option value="0">Select a university</option>
-            @foreach(var item in ViewBag.Category)
+        <label>Category</label>
+        <select asp-for="CategoryID" class="list-group-item">
+            <option value="0">Select a category </option>
+            @foreach (var item in ViewBag.Category)
             {
                 <option value="@item.Id">@item.Name</option>
             }
         </select>
         <span class=" text-danger" asp-validation-for="CategoryID"></span>
-    </div> 
+    </div>
     <div class=" form-group">
-        <input type="submit" class="btn btn-primary" value="Edit" />
+        <input type="submit" class="btn btn-primary" value="Add" />
     </div>
 </form>

@@ -1,5 +1,16 @@
 ﻿@model List<Book>
-@{
+@if (User.IsInRole("StoreOwner"))
+{
+    {
+        Layout = "StoreOwnerLayout";
+    }
+}
+else if(User.IsInRole("Admin"))
+{
+    Layout = "AdminLayout";
+}
+else
+{
     Layout = "Layout";
 }
 <form method="get" asp-controller="Book" asp-action="Search">

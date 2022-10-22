@@ -43,6 +43,10 @@ else {
                 <th>Desciption</th>
                 <td>@Model.Description</td>
             </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>@Model.Quantity</td>
+            </tr>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
             { 
                 <tr>

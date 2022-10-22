@@ -1,5 +1,6 @@
 ﻿using Assignment.Data;
 using Assignment.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Assignment.Controllers
         {
             this.context = context;
         }
-        
+
         public IActionResult Index()
         {
             var categories = context.categories.ToList();
@@ -49,6 +50,7 @@ namespace Assignment.Controllers
         {
             if (ModelState.IsValid)
             {
+                cate.Status = 2;
                 context.categories.Add(cate);
                 context.SaveChanges();
                 TempData["Message"] = "Add successful!";
@@ -58,6 +60,33 @@ namespace Assignment.Controllers
             {
                 return View(cate);
             }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult Request()
+        {
+            var categories = context.categories.ToList();
+            return View(categories);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult RequestApproved(int id)
+        {
+            var category = context.categories.Find(id);
+            category.Status = 1;
+            context.SaveChanges();
+            var categories = context.categories.ToList();
+            return View("Request", categories);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult RequestRejected(int id)
+        {
+            var category = context.categories.Find(id);
+            category.Status = 3;
+            context.SaveChanges();
+            var categories = context.categories.ToList();
+            return View("Request", categories);
         }
 
         [HttpGet]
@@ -81,26 +110,26 @@ namespace Assignment.Controllers
                 return View(uni);
             }
         }
-        public IActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                //tao ra object student co id duoc yeu cau
-                var category = context.categories.Find(id);
-                //xoa object co id vua tim thay
-                context.categories.Remove(category);
-                // luu lai thay doi trong db
-                context.SaveChanges();
+        //public IActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        //tao ra object student co id duoc yeu cau
+        //        var category = context.categories.Find(id);
+        //        //xoa object co id vua tim thay
+        //        context.categories.Remove(category);
+        //        // luu lai thay doi trong db
+        //        context.SaveChanges();
 
-                //gui thong bao ve trang index
-                TempData["Message"] = "Deleted!";
-                //khi dung redirect thi phai dung tempdata
-                return RedirectToAction(nameof(Index));
-            }
-        }
+        //        //gui thong bao ve trang index
+        //        TempData["Message"] = "Deleted!";
+        //        //khi dung redirect thi phai dung tempdata
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //}
     }
 }
